@@ -33,23 +33,7 @@ Attrition varies across age and gender groups, suggesting demographic influence.
 Significant gaps in monthly income may be tied to retention challenges.
 A small portion of employees work remotely (DistanceFromHome = 0), with possible implications for retention.
 
-**Sample Queries Used**
 
-sql
-Copy
-Edit
--- Overall Attrition Rate
-SELECT 
-  (SUM(CASE WHEN Attrition = 'Yes' THEN 1 ELSE 0 END) / COUNT(*)) * 100 AS AttritionRate 
-FROM employees;
-
--- Attrition by Department
-SELECT department, 
-       COUNT(*) AS total_employees,
-       SUM(CASE WHEN attrition = 'Yes' THEN 1 ELSE 0 END) AS attrition_count,
-       ROUND((SUM(CASE WHEN attrition = 'Yes' THEN 1 ELSE 0 END)/COUNT(*)) * 100, 2) AS attrition_rate 
-FROM employees 
-GROUP BY department;
 **How to Use**
 
 Import the HR dataset into your MySQL server.
